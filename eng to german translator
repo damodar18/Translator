@@ -1,0 +1,19 @@
+import subprocess
+
+try:
+    import translate
+except ImportError:
+    subprocess.check_call(['pip', 'install', 'translate'])
+
+from translate import Translator
+
+def translator_app():
+    print("***** WELCOME TO ENGLISH TO GERMAN TRANSLATOR ***** ")
+    print("-------------------------------------------------")
+    text = input("What is the text you want to translate? >> ")
+    trans = Translator(from_lang='en', to_lang='de')
+    translation = trans.translate(text)
+    return translation
+
+translation = translator_app()
+print("Translation:", translation)
